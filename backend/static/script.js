@@ -222,6 +222,23 @@ function loadTodos() {
     .catch(err => console.error(err));
 }
 
+function saveDueDate(todoId, newDate) {
+  if (!newDate) return;
+
+  fetch(`http://127.0.0.1:8000/todos/${todoId}/edit`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify({ due_date: newDate })
+  }).then(() => {
+    showToast("Due date updated", "success");
+    loadTodos();
+  });
+}
+
+
 function renderTodos(todos) {
   const list = document.getElementById("todoList");
   list.innerHTML = "";
@@ -266,7 +283,22 @@ function renderTodos(todos) {
           <span class="${todo.completed ? "done" : ""}">
             ${todo.title}
           </span>
+
           <small class="due-date">📅 ${dueText}</small>
+
+          ${
+            todo.completed
+              ? ""
+              : `
+            <input
+              type="date"
+              class="inline-date"
+              value="${todo.due_date ? todo.due_date.split("T")[0] : ""}"
+              onchange="saveDueDate(${todo.id}, this.value)"
+            />
+          `
+          }
+
           ${badgeHTML}
         </div>
       </div>
@@ -275,11 +307,13 @@ function renderTodos(todos) {
         <button class="edit-btn" onclick="editTodo(${todo.id}, '${todo.title}')">✏️</button>
         <button class="delete-btn" onclick="deleteTodo(${todo.id})">🗑️</button>
       </div>
-    `;
+`;
+
 
     list.appendChild(li);
   });
 }
+
 
 // ================= FILTERS =================
 function showAll() {

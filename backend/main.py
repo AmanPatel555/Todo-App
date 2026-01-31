@@ -178,8 +178,12 @@ def edit_todo(
     if not todo:
         raise HTTPException(status_code=404, detail="Todo not found")
 
-    todo.title = data.title
-    todo.due_date = data.due_date 
+    if data.title is not None:
+        todo.title = data.title
+
+    if data.due_date is not None:
+        todo.due_date = data.due_date
+
     db.commit()
     return {"message": "Todo updated"}
 

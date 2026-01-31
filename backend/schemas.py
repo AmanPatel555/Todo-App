@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from datetime import datetime
+from datetime import datetime, date
 from typing import Optional
 
 # ---------- USER ----------
@@ -24,8 +24,8 @@ class TodoOut(BaseModel):
         from_attributes = True
 
 class TodoUpdate(BaseModel):
-    title: str
-    due_date: Optional[datetime] = None 
+    title: Optional[str] = None
+    due_date: Optional[date] = None
 
 class ProfileUpdate(BaseModel):
     name: str
