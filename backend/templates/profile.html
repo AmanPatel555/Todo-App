@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Profile</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+  <div class="container profile-card">
+
+    <!-- HEADER -->
+    <div class="profile-header">
+      <div class="avatar" id="avatar">U</div>
+      <h2>My Profile</h2>
+      <p class="profile-subtitle">Account details</p>
+    </div>
+
+    <!-- PROFILE INFO -->
+    <div class="profile-info">
+      <label><strong>Name</strong></label>
+      <input id="nameInput" type="text" placeholder="Enter your name">
+
+      <label><strong>Email</strong></label>
+      <p id="email" class="profile-email"></p>
+    </div>
+
+    <!-- SAVE BUTTON -->
+    <button type="button" class="primary-btn" onclick="saveProfile()">
+      Save
+    </button>
+
+    <!-- ACTIONS -->
+    <div class="profile-actions">
+      <button type="button" class="secondary-btn" onclick="goToTodos()">
+        My Todos
+      </button>
+
+      <button type="button" class="logout-btn" onclick="logout()">
+        Logout
+      </button>
+    </div>
+
+  </div>
+
+  <!-- SCRIPT -->
+  <script src="/static/script.js"></script>
+
+</body>
+</html>

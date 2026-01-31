@@ -1,0 +1,407 @@
+/* ================= ROOT THEME ================= */
+:root {
+  --bg: linear-gradient(135deg, #667eea, #764ba2);
+  --card: #ffffff;
+  --text: #1e293b;
+  --btn: #667eea;
+  --btn-hover: #5a67d8;
+  --btn-text: #ffffff;
+  --border: #e5e7eb;
+  --item-bg: #f4f4f4;
+  --danger: #ef4444;
+}
+
+body.dark {
+  --bg: linear-gradient(135deg, #0f172a, #020617);
+  --card: #1e293b;
+  --text: #e5e7eb;
+  --btn: #38bdf8;
+  --btn-hover: #0ea5e9;
+  --btn-text: #020617;
+  --border: #334155;
+  --item-bg: #334155;
+}
+
+/* ================= BASE ================= */
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+body {
+  background: var(--bg);
+  margin: 0;
+  padding: 0;
+  color: var(--text);
+}
+
+/* ================= CARD ================= */
+.container {
+  max-width: 420px;
+  margin: 40px auto;
+  background: var(--card);
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* ================= TOP BAR ================= */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.dark-toggle,
+.profile-btn {
+  border: none;
+  background: #eef1ff;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* ================= FILTERS ================= */
+.filters {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.filters button {
+  flex: 1;
+  padding: 8px;
+  border-radius: 10px;
+  border: none;
+  background: #f1f3f8;
+  cursor: pointer;
+}
+
+/* ================= ADD TODO ================= */
+.add-todo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.add-todo input {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+}
+
+.add-todo button {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: var(--btn);
+  color: var(--btn-text);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.add-todo button:hover {
+  background: var(--btn-hover);
+}
+
+/* ================= TODO LIST ================= */
+#todoList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#todoList li {
+  background: var(--item-bg);
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Todo content */
+.todo-content {
+  display: flex;
+  gap: 10px;
+}
+
+.due-date {
+  font-size: 12px;
+  color: gray;
+  margin-top: 4px;
+}
+
+/* Overdue */
+.overdue {
+  border-left: 4px solid #ff4d4f;
+  background: rgba(255, 77, 79, 0.1);
+}
+
+/* Actions */
+.todo-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.edit-btn,
+.delete-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.delete-btn {
+  color: var(--danger);
+}
+
+.delete-btn:hover {
+  color: #dc2626;
+}
+
+/* ================= LOGOUT ================= */
+.logout-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: var(--danger);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* ================= AUTH PAGE ================= */
+.auth-card {
+  max-width: 420px;
+  margin: 80px auto;
+  text-align: center;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.auth-form input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.auth-form button {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background: var(--btn);
+  color: var(--btn-text);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.auth-form button:hover {
+  background: var(--btn-hover);
+}
+
+#msg {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+/* ================= PROFILE PAGE ================= */
+.profile-card {
+  text-align: center;
+}
+
+.profile-header {
+  margin-bottom: 20px;
+}
+
+.avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: var(--btn);
+  color: var(--btn-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin: 0 auto 10px;
+}
+
+.profile-info {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.profile-email {
+  background: var(--item-bg);
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.profile-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ================= DARK MODE ================= */
+body.dark .filters button,
+body.dark .dark-toggle,
+body.dark .profile-btn {
+  background: #2a2a2a;
+  color: white;
+}
+
+body.dark #todoList li {
+  background: #2a2a2a;
+}
+
+/* ===== TODO ROW FIX ===== */
+.todo-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.todo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.done {
+  text-decoration: line-through;
+  color: gray;
+}
+
+/* ===== PROFILE FORM FIX ===== */
+.profile-info label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.profile-info input {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.profile-info p {
+  margin-top: 0;
+}
+
+.profile-card button {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.profile-actions button {
+  width: 100%;
+}
+
+/* ================= PROFILE PAGE – FINAL FIX ================= */
+
+.profile-card {
+  text-align: center;
+}
+
+.profile-header {
+  margin-bottom: 20px;
+}
+
+.profile-subtitle {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+/* Labels */
+.profile-info label {
+  display: block;
+  font-weight: 600;
+  margin: 12px 0 6px;
+}
+
+/* Inputs */
+.profile-info input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+}
+
+/* Email box */
+.profile-email {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  background: var(--item-bg);
+  font-size: 14px;
+}
+
+/* Save button */
+.profile-card > button {
+  width: 100%;
+  margin-top: 18px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: var(--btn);
+  color: var(--btn-text);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.profile-card > button:hover {
+  background: var(--btn-hover);
+}
+
+/* My Todos + Logout group */
+.profile-actions {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* My Todos button */
+/* My Todos button (same as Save) */
+.profile-actions button:not(.logout-btn) {
+  background: var(--btn);
+  color: var(--btn-text);
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.profile-actions button:not(.logout-btn):hover {
+  background: var(--btn-hover);
+}
+
+
+
+/* Dark mode support */
+body.dark .profile-actions button:not(.logout-btn) {
+  background: #2a2a2a;
+  color: white;
+}
+

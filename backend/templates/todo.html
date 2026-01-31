@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Todos</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+  <div class="top-bar">
+    <h2>My Todos</h2>
+    <div class="top-actions">
+      <button class="dark-toggle" onclick="toggleDarkMode()">🌙</button>
+      <button class="profile-btn" onclick="window.location.href='profile.html'">
+        Profile
+      </button>
+    </div>
+  </div>
+
+  <div class="filters">
+    <button onclick="showAll()">All</button>
+    <button onclick="showCompleted()">Completed</button>
+    <button onclick="showPending()">Pending</button>
+  </div>
+
+  <div class="add-todo">
+    <input type="text" id="todoInput" placeholder="Enter a new todo" />
+    <input type="date" id="dueDateInput" />
+    <button onclick="addTodo()">Add Todo</button>
+  </div>
+
+  <ul id="todoList"></ul>
+
+  <button class="logout-btn" onclick="logout()">Logout</button>
+</div>
+
+<script src="/static/script.js"></script>
+</body>
+</html>
