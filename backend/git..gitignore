@@ -1,8 +1,18 @@
+# Python
 __pycache__/
 *.pyc
-*.db
+*.pyo
+*.pyd
 .env
 venv/
 .env/
-.idea/
-.vSCode/
+
+# SQLite
+*.db
+
+# OS
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/

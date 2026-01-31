@@ -81,6 +81,30 @@ body {
   border: none;
   background: #f1f3f8;
   cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* ✅ ACTIVE FILTER (FINAL & WORKING) */
+.filters button.active {
+  background: var(--btn);
+  color: var(--btn-text);
+  font-weight: bold;
+}
+
+/* ================= SEARCH ================= */
+.search-input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0 15px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+}
+
+body.dark .search-input {
+  background: #2a2a2a;
+  color: white;
 }
 
 /* ================= ADD TODO ================= */
@@ -113,6 +137,12 @@ body {
   background: var(--btn-hover);
 }
 
+.add-todo button:disabled {
+  background: #c7c7c7;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
 /* ================= TODO LIST ================= */
 #todoList {
   list-style: none;
@@ -130,22 +160,58 @@ body {
   align-items: center;
 }
 
-/* Todo content */
-.todo-content {
+.todo-left {
   display: flex;
+  align-items: center;
   gap: 10px;
+}
+
+.todo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.done {
+  text-decoration: line-through;
+  color: gray;
 }
 
 .due-date {
   font-size: 12px;
   color: gray;
-  margin-top: 4px;
 }
 
-/* Overdue */
-.overdue {
-  border-left: 4px solid #ff4d4f;
-  background: rgba(255, 77, 79, 0.1);
+/* ================= DUE DATE BADGES ================= */
+.badge {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: bold;
+  width: fit-content;
+}
+
+/* Existing */
+.today-badge {
+  background: #facc15;
+  color: #422006;
+}
+
+.overdue-badge {
+  background: #ef4444;
+  color: white;
+}
+
+/* NEW */
+.soon-badge {
+  background: #3b82f6; /* blue */
+  color: white;
+}
+
+.upcoming-badge {
+  background: #22c55e; /* green */
+  color: #052e16;
 }
 
 /* Actions */
@@ -230,6 +296,11 @@ body {
   margin-bottom: 20px;
 }
 
+.profile-subtitle {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
 .avatar {
   width: 70px;
   height: 70px;
@@ -248,106 +319,19 @@ body {
   margin-bottom: 15px;
 }
 
-.profile-email {
-  background: var(--item-bg);
-  padding: 8px;
-  border-radius: 6px;
-  font-size: 14px;
-}
-
-.profile-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* ================= DARK MODE ================= */
-body.dark .filters button,
-body.dark .dark-toggle,
-body.dark .profile-btn {
-  background: #2a2a2a;
-  color: white;
-}
-
-body.dark #todoList li {
-  background: #2a2a2a;
-}
-
-/* ===== TODO ROW FIX ===== */
-.todo-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.todo-text {
-  display: flex;
-  flex-direction: column;
-}
-
-.done {
-  text-decoration: line-through;
-  color: gray;
-}
-
-/* ===== PROFILE FORM FIX ===== */
-.profile-info label {
-  display: block;
-  margin-bottom: 6px;
-  font-weight: 600;
-}
-
-.profile-info input {
-  width: 100%;
-  margin-bottom: 12px;
-}
-
-.profile-info p {
-  margin-top: 0;
-}
-
-.profile-card button {
-  width: 100%;
-  margin-top: 10px;
-}
-
-.profile-actions button {
-  width: 100%;
-}
-
-/* ================= PROFILE PAGE – FINAL FIX ================= */
-
-.profile-card {
-  text-align: center;
-}
-
-.profile-header {
-  margin-bottom: 20px;
-}
-
-.profile-subtitle {
-  font-size: 13px;
-  opacity: 0.8;
-}
-
-/* Labels */
 .profile-info label {
   display: block;
   font-weight: 600;
   margin: 12px 0 6px;
 }
 
-/* Inputs */
 .profile-info input {
   width: 100%;
   padding: 10px;
   border-radius: 8px;
   border: 1px solid var(--border);
-  background: var(--card);
-  color: var(--text);
 }
 
-/* Email box */
 .profile-email {
   width: 100%;
   padding: 10px;
@@ -356,7 +340,6 @@ body.dark #todoList li {
   font-size: 14px;
 }
 
-/* Save button */
 .profile-card > button {
   width: 100%;
   margin-top: 18px;
@@ -373,7 +356,6 @@ body.dark #todoList li {
   background: var(--btn-hover);
 }
 
-/* My Todos + Logout group */
 .profile-actions {
   margin-top: 12px;
   display: flex;
@@ -381,8 +363,6 @@ body.dark #todoList li {
   gap: 10px;
 }
 
-/* My Todos button */
-/* My Todos button (same as Save) */
 .profile-actions button:not(.logout-btn) {
   background: var(--btn);
   color: var(--btn-text);
@@ -397,11 +377,75 @@ body.dark #todoList li {
   background: var(--btn-hover);
 }
 
-
-
-/* Dark mode support */
-body.dark .profile-actions button:not(.logout-btn) {
+/* ================= DARK MODE ================= */
+body.dark .filters button {
   background: #2a2a2a;
   color: white;
 }
 
+body.dark .filters button.active {
+  background: var(--btn);
+  color: var(--btn-text);
+}
+
+body.dark .dark-toggle,
+body.dark .profile-btn {
+  background: #2a2a2a;
+  color: white;
+}
+
+body.dark #todoList li {
+  background: #2a2a2a;
+}
+
+/* ================= TOAST NOTIFICATIONS ================= */
+#toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.toast {
+  min-width: 240px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  animation: slideIn 0.3s ease, fadeOut 0.3s ease 2.7s forwards;
+}
+
+.toast.success {
+  background: #22c55e;
+}
+
+.toast.error {
+  background: #ef4444;
+}
+
+.toast.info {
+  background: #3b82f6;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateX(120%);
+  }
+}

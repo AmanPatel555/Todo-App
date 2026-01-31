@@ -4,6 +4,8 @@
   <title>My Todos</title>
   <link rel="stylesheet" href="/static/style.css">
 </head>
+<div id="toast-container"></div>
+
 <body>
 
 <div class="container">
@@ -16,17 +18,24 @@
       </button>
     </div>
   </div>
+  
+  <input
+  type="text"
+  id="searchInput"
+  placeholder="🔍 Search todos..."
+  class="search-input"
+/>
 
   <div class="filters">
-    <button onclick="showAll()">All</button>
-    <button onclick="showCompleted()">Completed</button>
-    <button onclick="showPending()">Pending</button>
+    <button id="filter-all" onclick="showAll()">All</button>
+    <button id="filter-completed" onclick="showCompleted()">Completed</button>
+    <button id="filter-pending" onclick="showPending()">Pending</button>
   </div>
 
   <div class="add-todo">
     <input type="text" id="todoInput" placeholder="Enter a new todo" />
     <input type="date" id="dueDateInput" />
-    <button onclick="addTodo()">Add Todo</button>
+    <button id="addTodoBtn" onclick="addTodo()">Add Todo</button>
   </div>
 
   <ul id="todoList"></ul>
