@@ -4,7 +4,7 @@ A full-stack Todo application built using **FastAPI**, **SQLite**, and **Vanilla
 
 ## 🚀 Features
 - User Signup & Login (JWT Auth)
-- Create, Read, Update, Delete Todos
+- Create, Read, Update, Delete Todos, Search
 - Due Dates with overdue highlighting
 - Filters: All / Completed / Pending
 - Profile management
