@@ -8,7 +8,7 @@ A full-stack Todo application built using **FastAPI**, **SQLite**, and **Vanilla
 - Due Dates with overdue highlighting
 - Filters: All / Completed / Pending
 - Profile management
-- Dark mode support
+- Dark mode feature
 
 ## 🛠 Tech Stack
 - Backend: FastAPI, SQLAlchemy, SQLite
